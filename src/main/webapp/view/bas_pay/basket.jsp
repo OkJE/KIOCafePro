@@ -7,45 +7,68 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>Document</title>
-</head>
 <style>
-.container {
-	margin-left: 15px;
-	width: 1000px;
-}
-
-.basket-div {
-	display: flex;
-	width: 100%;
+table {
+	/* 	height: 200px; */
 	text-align: center;
-	line-height: 150px;
-	border-bottom: 1px solid black;
+	/* margin-left: 30px; */
+	min-width: 1000px;
 }
 
-p {
-	width: 150px;
+th, td {
+	align-items: center;
+	min-width: 100px;
+}
+
+td:not(.btn-td) {
+	line-height: 195px;
 }
 
 img {
-	margin: 10px 0px 8px 0px;
 	width: 150px;
-}
-
-button {
-	margin: auto;
+	margin-top: 30px;
 }
 
 .count {
-	width: 35px;
+	height: 28px;
 }
 
+.count-btn {
+	width: 45px;
+	height: 35px;
+	padding: 30px;
+	padding-top: 12px;
+	display: block;
+	display: flex;
+	align-items: center;
+	margin-top: 80px;
+}
+
+.up {
+	margin-right: 50px;
+	background-image: url('./img/up.png');
+}
+
+.down {
+	margin-right: 50px;
+	background-image: url('./img/down.png');
+}
+
+.checkbox {
+	position: absolute;
+	bottom: 3px;
+}
+/*  */
 .pay-div {
-	margin-top: 30px;
-	margin-bottom: 30px;
+	width: 80%;
+	margin: auto;
 	display: flex;
 	justify-content: end;
 	border: 1px black solid;
+	border-radius: 6px;
 }
 
 .pay-div>h4 {
@@ -53,64 +76,141 @@ button {
 }
 
 .pay-btn {
-	background-color: yellow;
 	float: right;
+	margin: 10px;
 }
 </style>
+</head>
 
 <body>
-	<h4>빵바구니</h4>
-	<div class="container" style="width: 1000px; margin-left: 15px;">
-		<div>
-			<form action="#">
-				<div class="basket-div"
-					style="display: flex; width: 100%; text-align: center; line-height: 150px; border-bottom: 1px solid black;">
-					<input type="checkbox">
-					<p>머커렁</p>
-					<img src="./img/bread2.png" alt="">
-					<p>1,000원</p>
 
-					<button class="count">▲</button>
-					<p class="count">10개</p>
-					<button class="count">▼</button>
-					<p>합계 10,000원</p>
-				</div>
-			</form>
-		</div>
-		<div>
-			<form action="#">
-				<div class="basket-div"
-					style="display: flex; width: 100%; text-align: center; line-height: 150px; border-bottom: 1px solid black;">
-					<input type="checkbox">
-					<p>식빵</p>
-					<img src="./img/bread1.png" alt="">
-					<p>1,000원</p>
-					<button class="count">▲</button>
-					<p class="count">10개</p>
-					<button class="count">▼</button>
-					<p>합계 10,000원</p>
-				</div>
-				<div class="basket-div"
-					style="display: flex; width: 100%; text-align: center; line-height: 150px; border-bottom: 1px solid black;">
-					<input type="checkbox">
-					<p>춰커뽱</p>
-					<img src="./img/bread3.png" alt="">
-					<p>1,000원</p>
-					<button class="count">▲</button>
-					<p class="count">1개</p>
-					<button class="count">▼</button>
-					<p>합계 10,000원</p>
-				</div>
-		</div>
-		<div class="pay-div"
-			style="margin-top: 30px; margin-bottom: 30px; display: flex; justify-content: end; border: 1px black solid;">
-			<h4 class="pay-p">상품금액 : 1,000원</h4>
-		</div>
-		<div>
-			<button class="pay-btn">결제</button>
+
+
+	<div style="width: 80%; margin: auto;">
+		<div class="w3-bar w3-middle">
+			<section>
+				<h4 style="margin-top: 15px;">빵바구니</h4>
+			</section>
+
+			<table class="w3-table w3-bordered"
+				style="width: 80%; margin-left: 30px;">
+				<tr>
+					<td>
+						<p>
+							<input class="w3-check" type="checkbox" checked="checked">
+							<label>마카롱</label>
+						</p>
+						<p>
+					</td>
+
+					<td><img src="./img/bread2.png" alt=""></td>
+					<td>
+						<p>1,000원</p>
+					</td>
+
+					<td class="btn-td" style="text-align: right;">
+						<button class="w3-button w3-white  count-btn"
+							style="border: 1px black solid; border-radius: 8px;">
+							<span>+</span>
+						</button>
+					</td>
+
+					<td>
+						<p class="count" style="text-align: center">10개</p>
+					<td class="btn-td" style="text-align: left">
+						<button class="w3-button w3-white   count-btn"
+							style="border: 1px black solid; border-radius: 8px;">
+							<span>-</span>
+						</button>
+					</td>
+					<td style="text-align: right">
+						<p>합계 10,000원</p>
+					</td>
+				</tr>
+				<!--  -->
+				<!--  -->
+				<!--  -->
+
+				<tr>
+					<td>
+						<p>
+							<input class="w3-check" type="checkbox" checked="checked">
+							<label>식빵</label>
+						</p>
+						<p>
+					</td>
+
+					<td><img src="./img/bread1.png" alt=""></td>
+					<td>
+						<p>1,000원</p>
+					</td>
+
+					<td class="btn-td" style="text-align: right;">
+						<button class="w3-button w3-white  count-btn"
+							style="border: 1px black solid; border-radius: 8px;">
+							<span>+</span>
+						</button>
+					</td>
+
+					<td>
+						<p class="count" style="text-align: center">10개</p>
+					<td class="btn-td" style="text-align: left">
+						<button class="w3-button w3-white   count-btn"
+							style="border: 1px black solid; border-radius: 8px;">
+							<span>-</span>
+						</button>
+					</td>
+					<td style="text-align: right">
+						<p>합계 10,000원</p>
+					</td>
+				</tr>
+				<!--  -->
+				<!--  -->
+				<!--  -->
+				<tr>
+					<td>
+						<p>
+							<input class="w3-check" type="checkbox" checked="checked">
+							<label>초코빵</label>
+						</p>
+						<p>
+					</td>
+
+					<td><img src="./img/bread3.png" alt=""></td>
+					<td>
+						<p>1,000원</p>
+					</td>
+
+					<td class="btn-td" style="text-align: right;">
+						<button class="w3-button w3-white  count-btn"
+							style="border: 1px black solid; border-radius: 8px;">
+							<span>+</span>
+						</button>
+					</td>
+
+					<td>
+						<p class="count" style="text-align: center">10개</p>
+					<td class="btn-td" style="text-align: left">
+						<button class="w3-button w3-white   count-btn"
+							style="border: 1px black solid; border-radius: 8px;">
+							<span>-</span>
+						</button>
+					</td>
+					<td style="text-align: right">
+						<p>합계 10,000원</p>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</div>
-
+	<div>
+		<div class="pay-div">
+			<h4 class="pay-p">상품금액 : 30,000원</h4>
+			<div>
+				<button class="pay-btn" style="height: 30px;">결제</button>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
