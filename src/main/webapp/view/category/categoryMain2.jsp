@@ -58,12 +58,12 @@
         align-items: center;
       }
 
-      .swiper-slide>a>img {
+/*       .swiper-slide>a>img {
         display: block;
         width: 100%;
         height: 70%;
         object-fit: cover;
-      }
+      } */
 		#wrapper {
 	  max-width: 1000px;
 		
@@ -84,8 +84,8 @@
 
   <body>
   <br>
+
   <div id="wrapper">
-	<div class="w3-center" >
 	<%-- <br>
     <img src="<%=request.getContextPath()%>/view/category/로고.png">
 </div>
@@ -106,7 +106,12 @@
     <!-- Swiper -->
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><a href="${pageContext.request.contextPath}/view/category/bakeryMain.jsp"><img src="<%=request.getContextPath()%>/view/category/자두.jpg"></a></div>
+        <div class="swiper-slide">
+        <a href="${pageContext.request.contextPath}/view/category/bakeryMain.jsp">
+        <div class="w3-display-container">
+  		<img src="<%=request.getContextPath()%>/view/category/자두.jpg"  alt="Lights" style=" width: 100%; height: 70%;">
+  		<div class="w3-padding w3-display-topmiddle">Bakery</div>
+        </div></a></div>
         <div class="swiper-slide"><a href="${pageContext.request.contextPath}/view/category/drinkMain.jsp">Drink</a></div>
        
       </div>
@@ -147,5 +152,6 @@
         keyboard: true,
       });
     </script>
+ 
   </body>
 </html>

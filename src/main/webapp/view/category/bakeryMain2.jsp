@@ -104,6 +104,7 @@
   </head>
 
   <body>
+  	<div style="width: 80%; margin: auto;">
   <h1>제과류</h1>
   <div class="line"></div>
   
@@ -309,8 +310,9 @@
       </div>
       <div class="swiper-pagination"></div>
     </div>
-    <div class="swiper-button-next"></div>
-	<div class="swiper-button-prev"></div>
+    
+<!--     <div class="swiper-button-next"></div>
+	<div class="swiper-button-prev"></div> -->
 	
 	
 	
@@ -533,8 +535,11 @@
       </div>
       <div class="swiper-pagination"></div>
     </div>
-    <div class="swiper-button-next"></div>
-	<div class="swiper-button-prev"></div>
+    
+    
+    
+<!--     <div class="swiper-button-next"></div>
+	<div class="swiper-button-prev"></div> -->
 
 
 
@@ -567,6 +572,16 @@
           },
         });
     </script>
+    <br>
+    <br>
+    <br>
+    <br>
+     <br>
+    <br>
+    <br>
+    <br>
+    
+    </div>
   </body>
 </html>
     
