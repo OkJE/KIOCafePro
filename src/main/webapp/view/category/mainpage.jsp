@@ -105,7 +105,8 @@ td>img {
 </head>
 
 <body>
-	<div class="border_space"></div>
+<!-- 	<div class="border_space"></div> -->
+<br>
 	<h1>이달의 추천 메뉴</h1>
 	<div class="line"></div>
 
@@ -358,6 +359,8 @@ td>img {
 
 
 	<!-- Swiper -->
+	<br>
+	<br>
 	<div class="border_space"></div>
 	<div class="swiper mySwiper">
 		<h1>디저트메뉴</h1>
@@ -605,7 +608,8 @@ td>img {
 
 
 	<!-- ------------------------------------------------ -->
-	
+	<br>
+	<br>
 	<div class="border_space"></div>
 	<h1>드링크 메뉴</h1>
 	<div class="line"></div>

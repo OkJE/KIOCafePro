@@ -5,11 +5,102 @@
 
 <head>
 <meta charset="UTF-8">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+	crossorigin="anonymous">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <title>Document</title>
+<script>
+	$(document).ready(function() {
+/* 		alert("hi"); */
+		let cntA = 0;
+		let cntB = 0;
+		let cntC = 0;
+		let allPrice = 0;
+
+		$('.plusA-btn').click(function() {
+			cntA++;
+			$(".productA-cnt-p").html(cntA);
+			allPrice = (cntA + cntB + cntC) * 1000 + "원";
+
+			$(".productATotalPrice").html(cntA * 1000 + "원");
+			$(".allPrice").html(allPrice);
+
+			console.log("hi");
+			console.log(cntA);
+		})
+		$('.minusA-btn').click(function() {
+			if (cntA != 0) {
+				cntA--;
+				$(".productA-cnt-p").html(cntA);
+				console.log(cntA);
+
+				$(".productATotalPrice").html(cntA * 1000 + "원");
+				allPrice = (cntA + cntB + cntC) * 1000;
+				$(".allPrice").html(allPrice);
+			}
+		})
+		// 
+		$('.plusB-btn').click(function() {
+			cntB++;
+			$(".productB-cnt-p").html(cntB);
+
+			$(".productBTotalPrice").html(cntB * 1000 + "원");
+			allPrice = (cntA + cntB + cntC) * 1000 + "원";
+			$(".allPrice").html(allPrice);
+			console.log(cntB);
+		})
+		$('.minusB-btn').click(function() {
+			if (cntB != 0) {
+				cntB--;
+				$(".productB-cnt-p").html(cntB);
+
+				$(".productBTotalPrice").html(cntB * 1000 + "원");
+				allPrice = (cntA + cntB + cntC) * 1000 + "원";
+				$(".allPrice").html(allPrice);
+				console.log(cntB);
+			}
+		})
+		$('.plusC-btn').click(function() {
+			cntC++;
+			$(".productC-cnt-p").html(cntC);
+
+			$(".productCTotalPrice").html(cntC * 1000 + "원");
+			allPrice = (cntA + cntB + cntC) * 1000 + "원";
+			$(".allPrice").html(allPrice);
+			console.log(cntC);
+		})
+		$('.minusC-btn').click(function() {
+			if (cntC != 0) {
+				cntC--;
+				$(".productC-cnt-p").html(cntC);
+
+				$(".productCTotalPrice").html(cntC * 1000);
+				allPrice = (cntA + cntB + cntC) * 1000;
+				$(".allPrice").html(allPrice);
+				console.log(cntC);
+			}
+		})
+
+		$('.mi').click(function() {
+			alert("hi");
+			console.log("hi");
+		})
+
+	});
+
+	console.log("hi");
+</script>
 <style>
 table {
 	/* 	height: 200px; */
@@ -83,9 +174,6 @@ img {
 </head>
 
 <body>
-
-
-
 	<div style="width: 80%; margin: auto;">
 		<div class="w3-bar w3-middle">
 			<section>
@@ -109,22 +197,22 @@ img {
 					</td>
 
 					<td class="btn-td" style="text-align: right;">
-						<button class="w3-button w3-white  count-btn"
-							style="border: 1px black solid; border-radius: 8px;">
-							<span>+</span>
-						</button>
-					</td>
-
-					<td>
-						<p class="count" style="text-align: center">10개</p>
-					<td class="btn-td" style="text-align: left">
-						<button class="w3-button w3-white   count-btn"
+						<button class="w3-button w3-white minusA-btn  count-btn"
 							style="border: 1px black solid; border-radius: 8px;">
 							<span>-</span>
 						</button>
 					</td>
+
+					<td>
+						<p class="count productA-cnt-p" style="text-align: center">0개</p>
+					<td class="btn-td" style="text-align: left">
+						<button class="w3-button w3-white plusA-btn   count-btn"
+							style="border: 1px black solid; border-radius: 8px;">
+							<span>+</span>
+						</button>
+					</td>
 					<td style="text-align: right">
-						<p>합계 10,000원</p>
+						<p class="productATotalPrice">0</p>
 					</td>
 				</tr>
 				<!--  -->
@@ -146,24 +234,26 @@ img {
 					</td>
 
 					<td class="btn-td" style="text-align: right;">
-						<button class="w3-button w3-white  count-btn"
-							style="border: 1px black solid; border-radius: 8px;">
-							<span>+</span>
-						</button>
-					</td>
-
-					<td>
-						<p class="count" style="text-align: center">10개</p>
-					<td class="btn-td" style="text-align: left">
-						<button class="w3-button w3-white   count-btn"
+						<button class="w3-button w3-white minusB-btn  count-btn"
+							id="minusA-btn"
 							style="border: 1px black solid; border-radius: 8px;">
 							<span>-</span>
 						</button>
 					</td>
+
+					<td>
+						<p class="count  productB-cnt-p" style="text-align: center">0개</p>
+					<td class="btn-td" style="text-align: left">
+						<button class="w3-button w3-white plusB-btn   count-btn"
+							style="border: 1px black solid; border-radius: 8px;">
+							<span>+</span>
+						</button>
+					</td>
 					<td style="text-align: right">
-						<p>합계 10,000원</p>
+						<p class="productBTotalPrice">0</p>
 					</td>
 				</tr>
+
 				<!--  -->
 				<!--  -->
 				<!--  -->
@@ -182,22 +272,22 @@ img {
 					</td>
 
 					<td class="btn-td" style="text-align: right;">
-						<button class="w3-button w3-white  count-btn"
-							style="border: 1px black solid; border-radius: 8px;">
-							<span>+</span>
-						</button>
-					</td>
-
-					<td>
-						<p class="count" style="text-align: center">10개</p>
-					<td class="btn-td" style="text-align: left">
-						<button class="w3-button w3-white   count-btn"
+						<button class="w3-button w3-white minusC-btn  count-btn"
 							style="border: 1px black solid; border-radius: 8px;">
 							<span>-</span>
 						</button>
 					</td>
+
+					<td>
+						<p class="count productC-cnt-p" style="text-align: center">0개</p>
+					<td class="btn-td" style="text-align: left">
+						<button class="w3-button w3-white plusC-btn   count-btn"
+							style="border: 1px black solid; border-radius: 8px;">
+							<span>+</span>
+						</button>
+					</td>
 					<td style="text-align: right">
-						<p>합계 10,000원</p>
+						<p class="productCTotalPrice">0</p>
 					</td>
 				</tr>
 			</table>
@@ -205,12 +295,15 @@ img {
 	</div>
 	<div>
 		<div class="pay-div">
-			<h4 class="pay-p">상품금액 : 30,000원</h4>
+			<h4 class="pay-p allPrice">상품금액 : 0</h4>
 			<div>
 				<button class="pay-btn" style="height: 30px;">결제</button>
 			</div>
 		</div>
 	</div>
 </body>
+
+
+
 
 </html>

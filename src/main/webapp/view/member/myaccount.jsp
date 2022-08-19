@@ -59,7 +59,7 @@ button {
 		<h1 class="w3-center">마이 페이지</h1>
 		<br>
 		<caption>
-			<h4 class="w3-center" style="float: left;">주문정보</h4>
+			<h4 class="w3-center" style="float: left;">회원정보</h4>
 		</caption>
 		<table table class="w3-table w3-bordered w3-center"
 			style="background-color: #fff; color: #000">

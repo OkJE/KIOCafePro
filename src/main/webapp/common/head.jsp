@@ -17,7 +17,7 @@
 		<a
 			href="${pageContext.request.contextPath}/view/category/mainpage.jsp">
 			<img src="${pageContext.request.contextPath}/common/img/logo1.png"
-			style="width: 250px; heignt: 250px;">
+			style="width: 400px; heignt: 400px;">
 		</a>
 	</div>
 	<!-- 로고 및 index이동   끝-->
@@ -37,11 +37,11 @@
 
 	<!-- 메뉴바  -->
 	<div style="width: 80%; margin: auto;">
-	<div class="w3-bar w3-brown w3-middle" >
+	<div class="w3-bar w3-sand w3-middle" >
 		<a href="${pageContext.request.contextPath}/view/category/mainpage.jsp" class="w3-bar-item w3-button">HOME</a>
 
 		<div class="w3-dropdown-hover">
-			<button class="w3-button  w3-brown"><a href="${pageContext.request.contextPath}/view/category/categoryMain2.jsp">카테고리</a></button>
+			<button class="w3-button  w3-sand"><a href="${pageContext.request.contextPath}/view/category/categoryMain2.jsp">카테고리</a></button>
 			<div class="w3-dropdown-content w3-bar-block w3-card-4">
 				<a href="${pageContext.request.contextPath}/view/category/bakeryMain.jsp" class="w3-bar-item w3-button">디저트</a>
 				<a href="${pageContext.request.contextPath}/view/category/drinkMain.jsp" class="w3-bar-item w3-button">음료</a>
@@ -50,7 +50,7 @@
 
 
 		<div class="w3-dropdown-hover">
-			<button class="w3-button  w3-brown">주문조회</button>
+			<button class="w3-button  w3-sand">주문조회</button>
 			<div class="w3-dropdown-content w3-bar-block w3-card-4">
 				<a href="${pageContext.request.contextPath}/view/bas_pay/basket.jsp" class="w3-bar-item w3-button">장바구니</a> <a href="#"
 					class="w3-bar-item w3-button">결제란</a>

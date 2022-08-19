@@ -20,7 +20,7 @@
 	
 	footer>address>p{
 	    font-size:1.1rem; line-height:1.1rem; 
-	    color:white;
+	    color:gray;
 	}
 	.email{
 		text-decoration: underline;		}
@@ -33,7 +33,7 @@
 </head>
 <body>
 	<div style="width: 80%; margin: auto;">
-	<footer class="center w3-brown">
+	<footer class="center w3-sand">
         <address>
             <p>대표 : KMS &nbsp;&nbsp;&nbsp; 법인명 : KIObakerycafe &nbsp;&nbsp;&nbsp; 전화 : 1588-8800</p>
             <p class="email">E-mail : KIO@KIObakerycafe.co.kr</p>
