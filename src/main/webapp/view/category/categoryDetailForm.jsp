@@ -120,7 +120,7 @@
 
 				<div class="w3-half w3-padding-large">
 					<div class="prod-name">
-						<h2 class="tbl-text w3-border-bottom w3-border-black">kic
+						<h2 class="tbl-text w3-border-bottom w3-border-black">kio
 							bakery 곰돌이 쿠키 세트</h2>
 					</div>
 					<br>
@@ -144,7 +144,7 @@
 
 								<tr>
 									<th>제조사/공급사</th>
-									<td>kic bakery/kic</td>
+									<td>kio bakery/kio</td>
 								</tr>
 
 								<tr>
