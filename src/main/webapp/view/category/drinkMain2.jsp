@@ -132,7 +132,7 @@
 				    <td class="w3-teal"> Slide 2</td>
 				 
 				   <td  rowspan="2">&nbsp;&nbsp;&nbsp;<img alt="#" src="./img/Buy.png"></td>
-			  	</tr>
+			  	</tr>C
 			  	<tr>
 				     <td> &nbsp;</td>
 				    <td>30,000원</td>
