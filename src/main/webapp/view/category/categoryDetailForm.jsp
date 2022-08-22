@@ -96,11 +96,19 @@
 </head>
 
 <body>
+<<<<<<< HEAD
+<div class="w3-container w3-content w3-center w3-padding-64 w3-white" style="max-width:1000px">
+
+<div style="font-family:sans-serif">
+<div class="w3-row w3-stretch">
+<div class="w3-half w3-padding-large w3-hide-small"> 
+=======
 	<div class="w3-container w3-content w3-center w3-padding-64 w3-white"
 		style="max-width: 1000px">
 		<div style="font-family: sans-serif">
 			<div class="w3-row w3-stretch">
 				<div class="w3-half w3-padding-large w3-hide-small">
+>>>>>>> branch 'master' of https://github.com/OkJE/KIOCafePro.git
 
 					<ul class="detailImg">
 						<img src="img/bearcookie.jpg" class="w3-round w3-image"
@@ -147,6 +155,74 @@
 									<td>kio bakery/kio</td>
 								</tr>
 
+<<<<<<< HEAD
+<tr>
+<th>배송비</th>
+<td>무료배송</td>
+</tr>
+<tr>
+<th>총 상품 금액</th>
+<td>10,000</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<br>
+<div class="w3-border-bottom w3-border-black">
+</div>
+</div>
+
+<br>
+<div class="w3-half w3-padding-large">
+<button href="#a" class="w3-btn w3-block w3-white w3-border w3-border-green w3-teal">장바구니</button>
+<button href="#a" class="w3-btn w3-block w3-teal">구매하기</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="w3-row w3-stretch">
+<div class="w3-padding-large w3-hide-small">
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px">
+
+<div id="navbar">
+  <a class="active" href="#productDetail"><input class="w3-bar-item w3-button w3-light-grey" value="상세설명"></a>
+  <a href="#review"><input class="w3-bar-item w3-button w3-light-grey" value="리뷰"></a>
+  <a href="#qna"><input class="w3-bar-item w3-button w3-light-grey" value="QnA" style=""></a>
+</div>
+
+<!-- 상세설명 페이지 -->
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="productDetail">
+<img src="img/detailimgEx.jpg" class="w3-center" alt="Table" width="700">
+</div>
+<!-- 리뷰 페이지 -->
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="review">
+<h3 class="w3-center">리뷰</h3>
+<p> 등록  된 리뷰가 없습니다 </p>
+<a class="w3-button w3-right w3-grey" href="#">리뷰 남기기</a>
+</div>
+ <!-- QnA 페이지 -->
+ <div class="mainBody w3-white" id="qna">
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="qna">
+<h3 class="w3-center">QnA</h3>
+<p> 등록  된 게시물이 없습니다 </p>
+<a class="w3-button w3-right w3-grey" href="#">질문하기</a>
+
+</div>
+</div>
+<!-- 맨 위로 버튼 -->
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="top"></div>
+<a class="w3-button w3-right w3-grey" href="#">맨 위로가기</a>
+</div>
+</div>
+<div>
+<!-- footer-->
+		
+<!-- //footer-->
+</div>
+</div>
+
 								<tr>
 									<th>구매수량</th>
 									<td>
@@ -164,6 +240,7 @@
 										</button>
 									</td>
 								</tr>
+
 
 
 								<tr>
