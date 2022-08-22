@@ -17,7 +17,7 @@
 			style="background-color: #fff; color: #000; width: 700px; margin: auto;">
 			<tbody>
 			<caption>
-				<font size="6em">회원가입</font>		<br><br><br><br>
+				<font size="6em"><span style="background:linear-gradient(to top,#FFE400 20%, transparent 40%)">&nbsp;회원가입&nbsp;</span></font>		<br><br><br><br>
 			</caption>
 	
 			<tr>
