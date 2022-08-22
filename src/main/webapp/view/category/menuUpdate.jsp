@@ -28,7 +28,7 @@ method="post" onsubmit="return inputCheck(this)">
 <table class="w3-table w3-bordered"
 			style="background-color: #fff; color: #000; width: 700px; margin: auto;">
 			<tbody>
-<input type="hidden" name="picture" value="Picturee">
+<input type="hidden" name="picture" value="Picture">
       
      
          <tr>
