@@ -62,6 +62,7 @@ border : 1px;
 </div> --%>
 <body>
 <div class="w3-container w3-content w3-center w3-padding-64 w3-white" style="max-width:1000px">
+
 <div style="font-family:sans-serif">
 <div class="w3-row w3-stretch">
 <div class="w3-half w3-padding-large w3-hide-small"> 
@@ -151,9 +152,9 @@ border : 1px;
 <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px">
 
 <div id="navbar">
-  <a class="active" href="#productDetail">상세설명</a>
-  <a href="#review">리뷰</a>
-  <a href="#qna">QnA</a>
+  <a class="active" href="#productDetail"><input class="w3-bar-item w3-button w3-light-grey" value="상세설명"></a>
+  <a href="#review"><input class="w3-bar-item w3-button w3-light-grey" value="리뷰"></a>
+  <a href="#qna"><input class="w3-bar-item w3-button w3-light-grey" value="QnA" style=""></a>
 </div>
 
 <!-- 상세설명 페이지 -->
