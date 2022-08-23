@@ -11,7 +11,7 @@
 
 	<!--  -->
 
-	<!-- 로고 및 index이동   시작-->
+	<!-- 로고 및 index이동   시작 -->
 	<div style="width: 80%; margin: auto;">
 	<div class="w3-center">
 		<a
