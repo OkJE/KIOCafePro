@@ -391,7 +391,7 @@
                             <a>
                                 <img src="./img/bread3.jpg">
                             </a>
-                        </li class="slideitem">
+                        </li>
                         <div class="slide-control">
 
                             <div class="control01 div-center">
@@ -410,7 +410,7 @@
                     </ul>
 
 
-                    </ul>
+                
                     <!-- 페이징 -->
                     <ul class="slide-pagelist">
                         <li><label for="slide01"></label></li>
@@ -476,11 +476,8 @@
 			<c:if test="${end  < maxPage}">
 			   <a href="${pageContext.request.contextPath}/board/boardList?pageNum=${start+bottomLine}"   
 			class="w3-button  ">[다음]</a></c:if>
-			
-			
 			</div>
 			</c:if>
-
 			
 		</div>	
 		
