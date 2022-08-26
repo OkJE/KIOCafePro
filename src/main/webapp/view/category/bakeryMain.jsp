@@ -422,7 +422,7 @@
 
           
 		
-		<h2 class="line">상품 목록</h1>
+		<h2 class="line">상품 목록</h2>
 	<div class="flex-div">
 	<!-- 관리자 영역================================================================================= -->
 			
@@ -430,7 +430,8 @@
 			
 			<c:if test="${boardCount == 0}">
 				<p>등록된 게시물이 없습니다.</p>
-			</c:if>
+				</c:if>
+			
 			<a class="w3-button w3-right w3-grey" href="${pageContext.request.contextPath }/board/boardForm">게시판 입력</a>
 			
 			<c:if test="${boardCount > 0}">
@@ -466,7 +467,7 @@
 			
 			
 			<c:forEach  var="p" begin="${start}"  end="${end}">
-			  	<a href="${pageContext.request.contextPath}/board/boardList?pageNum=${p}"class="w3-button   <c:if test="${pageInt==p}"> 목록  </c:if>">${p}</a>
+			  	<a href="${pageContext.request.contextPath}/board/boardList?pageNum=${p}"class="w3-button">   <c:if test="${pageInt==p}"> 목록  </c:if>${p}</a>
 			</c:forEach>  
 				
 			
