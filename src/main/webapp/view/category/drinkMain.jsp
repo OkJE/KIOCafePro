@@ -306,6 +306,60 @@
                     left: 94px;
                     right: 0px;
                 }
+                
+                       /* ------------------------------------------------------- */ 
+               h2 {
+						padding-top:5rem;
+						text-align: center;
+					}
+               
+                .line {
+					border: 0.3rem solid;
+					border-color:#F9BFAB;
+					border-top: 0;
+					border-left: 0;
+					border-right: 0;
+					width: 10rem;
+					margin: auto;
+					margin-bottom: 6rem;
+				}
+				
+				.product-container-div {
+					padding: 0px 12px 60px 12px;
+				}
+				
+				.product-div {
+					border: 1px solid #e2e2e2;
+					border-radius: 8px;
+				}
+				
+				.product-div>img {
+					width: 100%;
+				}
+				
+				table {
+					margin: 0.6rem auto;
+				}
+				.title{
+					border-color: #FCE7E2;
+				}
+				
+				td>img {
+					width: 25%;
+					padding-left: 6rem;
+					object-fit: contain;
+				}
+				
+				.border_space {
+					margin-top: 18rem;
+				}
+				
+				.flex-div {
+					display: flex;
+					width: 1200px;
+					margin: auto;
+					flex-wrap: wrap;
+				}
             </style>
 </head>
  <h1 >이달의 추천 메뉴</h1>
@@ -370,10 +424,69 @@
 		
 		
 		
-		
+		<h2 class="line">상품 목록</h1>
+	<div class="flex-div">
+	<!-- 관리자 영역================================================================================= -->
+			
+			<div class="flex-div"></div>
+			
+			<c:if test="${boardCount == 0}">
+				<p>등록된 게시물이 없습니다.</p>
+			</c:if>
+			<a class="w3-button w3-right w3-grey" href="${pageContext.request.contextPath }/board/boardForm">게시판 입력</a>
+			
+			<c:if test="${boardCount > 0}">
+			
+			<!-- ============================================================================================================ -->
+			<c:forEach var="index" begin="1" end="8" >
+				<div class="product-container-div" style="width: 25%; margin-top: 3rem; ">
+
+
+					<div class=" product-div" style="width: 100%;">
+						<img alt="#" src="./img/bread1.png">
+					</div>
+					<table>
+						<tr>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td style="background-color: #FCE7E2 ;"> Slide 1</td>
+							<td rowspan="2">&nbsp;&nbsp;<img alt="#" src="img/Buy.png"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td style="width: 6rem">30,000원</td>
+						</tr>
+					</table>
+				</div>
+			</c:forEach>
+			
+			<br>
+			
+			<div class="w3-bar w3-center w3-small">
+				<c:if test="${start <= bottomLine}"> <a href="#"  class="w3-button  w3-disabled ">[이전]</a> </c:if>
+				<c:if test="${start > bottomLine}">
+			  <a href="${pageContext.request.contextPath}/board/boardList?pageNum=${start-bottomLine}"   class="w3-button" >[이전]</a></c:if>
+			
+			
+			<c:forEach  var="p" begin="${start}"  end="${end}">
+			  	<a href="${pageContext.request.contextPath}/board/boardList?pageNum=${p}"class="w3-button   <c:if test="${pageInt==p}"> 목록  </c:if>">${p}</a>
+			</c:forEach>  
+				
+			
+			<c:if test="${end  >= maxPage}">
+			   <a href="#"   class="w3-button    w3-disabled ">[다음]</a></c:if>
+			<c:if test="${end  < maxPage}">
+			   <a href="${pageContext.request.contextPath}/board/boardList?pageNum=${start+bottomLine}"   
+			class="w3-button  ">[다음]</a></c:if>
+			
+			
+			</div>
+			</c:if>
+
+			
+		</div>	
      	
-   <div class="w3-container">
-<%-- <h3  class="w3-center">${boardName }:${boardCount}</h3> --%>
+   <%-- <div class="w3-container">
+<h3  class="w3-center">${boardName }:${boardCount}</h3>
 <!-- 관리자 영역================================================================================= -->
 
 <c:if test="${boardCount == 0}">
@@ -431,42 +544,8 @@ class="w3-button  ">[다음]</a></c:if>
 </div>
 </c:if>
 
-</div>   	
-	<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <script>
-      var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 4,
-        grid: {
-          rows: 1,
-        },
-        spaceBetween: 30,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
-      });
-      
-      var swiper = new Swiper(".mySwiper2", {
-          slidesPerView: 4,
-          grid: {
-            rows: 1,
-          },
-          spaceBetween: 30,
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
-          navigation: {
-              nextEl: ".swiper-button-next2",
-              prevEl: ".swiper-button-prev2",
-            },
-        });
-    </script>
-    <a href=""></a>
+</div>   	 --%>
+   
     
     
 </body>

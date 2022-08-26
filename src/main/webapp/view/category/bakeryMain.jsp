@@ -374,7 +374,7 @@
                     <ul class="slidelist">
                         <li class="slideitem">
                             <a>
-                                <img src="./img/bread1.png" alt="${pageContext.request.contextPath}/view/category/categoryDetailForm.jsp">
+                                <img src="./img/bread1.png" alt="${pageContext.request.contextPath}/view/category/bakeryMain2.jsp">
                                 <div class="textbox">
                                 	<h1>소세지 빵</h1>
                                 	<p>아이 어른 할 것 없이 누구나 좋아하는 추억의 옛날식 소시지빵</p>
