@@ -1,220 +1,305 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- À§ 3°³ÀÇ ¸ŞÅ¸ ÅÂ±×´Â *¹İµå½Ã* head ÅÂ±×ÀÇ Ã³À½¿¡ ¿Í¾ßÇÕ´Ï´Ù; ¾î¶² ´Ù¸¥ ÄÜÅÙÃ÷µéÀº ¹İµå½Ã ÀÌ ÅÂ±×µé *´ÙÀ½¿¡* ¿Í¾ß ÇÕ´Ï´Ù -->
+    <title>t</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+
+        let state = 0;
+        function openAddressModal() {
+            let a = document.querySelector(".myaddress-modal");
+            if (state == 0) {
+                a.style.display = "block"
+                state = 1;
+                console.log(state);
+            }
+            else if (state == 1) {
+                a.style.display = "none"
+                state = 0;
+                console.log(state);
+            }
+        }
+
+        function sample4_execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    // ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºĞ.
+
+                    // µµ·Î¸í ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Ç¥½ÃÇÑ´Ù.
+                    // ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºĞ±â ÇÑ´Ù.
+                    var roadAddr = data.roadAddress; // µµ·Î¸í ÁÖ¼Ò º¯¼ö
+                    var extraRoadAddr = ''; // Âü°í Ç×¸ñ º¯¼ö
+                    // ¹ıÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ıÁ¤¸®´Â Á¦¿Ü)
+                    // ¹ıÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
+
+                    // console.log(data.buildingName);
+
+                    if (data.bname !== '' && /[µ¿|·Î|°¡]$/g.order - (data.bname)) {
+                        extraRoadAddr += data.bname;
+                    }
+                    console.log(data);
+                    // °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
+                    if (data.buildingName !== '' && data.apartment === 'Y') {
+                        extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // Ç¥½ÃÇÒ Âü°íÇ×¸ñÀÌ ÀÖÀ» °æ¿ì, °ıÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
+                    if (extraRoadAddr !== '') {
+                        extraRoadAddr = ' (' + extraRoadAddr + ')';
+                    }
+
+                    let inputAddress = "";
+                    inputAddress = data.roadAddress;
+                    if (data.buildingName) {
+                        inputAddress = data.roadAddress + " (" + data.buildingName + ")"
+                    }
+                    // ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+                    // ¿ìÆí¹øÈ£
+                    document.getElementById("addressInput1").value = data.zonecode;
+                    document.getElementById('addressInput2').value = inputAddress;
+
+
+
+                }
+            }).open();
+        }
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        html {
+            line-height: 1.15;
+            /*±âº» Çà°£ ³ôÀÌ*/
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .center {
+            display: block;
+            margin: auto;
+            width: 100%;
+            text-align: center;
+        }
+
+        div {
+            box-sizing: border-box;
+        }
+
+        .title {
+            padding-top: 40px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+
+
+        th {
+            padding: 21px 0;
+            border-left: 1px solid #eaeaea;
+            background: #b5babd;
+            color: #fff;
+            font-weight: bold;
+        }
+
+
+        td {
+            border-left: 1px solid #eaeaea;
+            border-bottom: 1px solid #eaeaea;
+            background: #fcfcfb;
+        }
+
+
+        .head-title {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .head-title>span {
+
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            font-size: 32px;
+            background: linear-gradient(to top, #FFE400 20%, transparent 40%);
+        }
+
+        .cont_title01 {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 20px;
+            line-height: 38px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .board_write {
+
+            color: black;
+            border-top: 1px solid #d9d9d9;
+            font-size: 15px;
+            line-height: 20px;
+            text-align: left;
+            box-sizing: border-box;
+            border-right: 1px solid #d9d9d9;
+        }
+
+        .board_write th {
+            color: black;
+            padding: 15px 35px;
+            background-color: #E5E4E4;
+
+
+        }
+
+        input.text {
+            padding: 0 10px;
+            margin: 15px 15px;
+            border: 1px solid #c4c4c4;
+            font-size: 15px;
+            line-height: 33px;
+            box-sizing: border-box;
+        }
+
+        .address-input {
+            padding-top: 10px;
+            padding-bottom: 15px;
+        }
+
+        .address-input>div>input {
+            margin: 5px 0px 0px 15px;
+        }
+
+        .btn1 {
+            border: 0px;
+            width: 120px;
+            height: 35px;
+            background-color: #92979b;
+            color: white;
+        }
+    </style>
+
+
 </head>
-<style>
-/* ë²„íŠ¼ ê°™ì€ ì»´í¬ë„ŒíŠ¸ ì›€ì§ì¼ë•ŒëŠ” display flex ë‚˜ grid 
-í˜¹ì€ position ì£¼ì…”ì•¼ í•´ì—¬ */
-/* í”Œë ‰ìŠ¤ ê·¸ë¦¬ë“œ í˜¹ì€ ë””ìŠ¤í”Œë ˆì´ë‘ í¬ì§€ì…˜ ì¡°ì ˆ ì •ë„ */
-/* ì €ëŠ” ì£¼ë¡œ ì¸ë¼ì¸ë¸”ëŸ­ ì£¼ê³  text alignìœ¼ë¡œ ë§ì¶”ëŠ” í¸ì…ë‹ˆë‹¤ ìŠ¤ê»„í‹°ë¹„ */
-body {
-	text-align: center;
-}
-
-table {
-	border-collapse: collapse;
-	min-width: 500px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-table, th, td {
-	border: 1px solid black;
-}
-
-.w-2>td:nth-child(2n) {
-	width: 250px;
-}
-
-/* ê°’ì´ ì—†ìœ¼ë©´ ë†’ì´ê°€ ì—†ì–´ì ¸ ë†’ì´ ì¶”ê°€ */
-.h-2>td:nth-child(n) {
-	height: 24px;
-}
-
-.border-none-table {
-	border-left: none;
-	border-bottom: none;
-}
-
-.border-none-tr>td:nth-child(-n+3) {
-	border-spacing: 0px;
-	border-style: none;
-}
-
-button {
-	margin-top: 10px;
-}
-</style>
 
 <body>
-	<br>
-	<div style="width: 60%; margin: auto;">
-		<h1 class="w3-center">ë§ˆì´ í˜ì´ì§€</h1>
-		<br>
-		<caption>
-			<h4 class="w3-center" style="float: left;">íšŒì›ì •ë³´</h4>
-		</caption>
-		<table table class="w3-table w3-bordered w3-center"
-			style="background-color: #fff; color: #000">
-			<tr class="w-2">
-				<td>ì•„ì´ë””</td>
-				<td colspan="2"></td>
-			</tr>
-			<tr>
-				<td>ì´ë¦„</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>í˜„ ì£¼ì†Œ</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>ì´ë©”ì¼</td>
-				<td></td>
-			</tr>
-		</table>
-		<br>
-  <p style="text-align: right; ">
-  <input class="w3-btn w3-light-gray" style="width: 150px" type="button"  value="ê°œì¸ì •ë³´ìˆ˜ì •" ></p>
-		<!--  -->
-		<!--  -->
-		<table table class="w3-table w3-bordered w3-center"
-			style="background-color: #fff; color: #000">
-			<caption>
-				<h4 class="w3-center" style="float: left;">ì£¼ë¬¸ì •ë³´</h4>
-			</caption>
-			<tr>
-				<td>ì£¼ë¬¸ë‚ ì§œ</td>
-				<td>ì£¼ë¬¸ë‚´ì—­(ì£¼ë¬¸ìƒì„¸)</td>
-				<td>ë°°ì†¡í˜„í™©</td>
-			</tr>
-			<tr class="h-2">
-				<td>20220818</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr class="h-2">
-				<td>20220819</td>
-				<td></td>
-				<td></td>
-			</tr>
-		</table>
-		<!--  -->
-		<br>
+    <!--  -->
 
-		<caption>
-			<h4 class="w3-center" style="float: left;">ì¥ë°”êµ¬ë‹ˆ</h4>
-		</caption>
-		<table table class="w3-table w3-bordered w3-center"
-			style="background-color: #fff; color: #000">
-			<tr>
-				<td>ì„ íƒ</td>
-				<td>ìƒí’ˆëª…</td>
-				<td>ê°€ê²©</td>
-				<td>ìˆ˜ëŸ‰</td>
-				<td>ì´ê°€ê²©</td>
-			</tr>
-			<tr class="h-2">
-				<td>1</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr class="h-2">
-				<!-- ì—¬ë°± -->
-				<td>2</td>
-				<td></td>
-				<td></td>
-				<!--  -->
-				<td></td>
-				<td></td>
-			</tr>
-			<tr class="h-2 border-none-tr">
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>ìƒí’ˆê¸ˆì•¡</td>
-			</tr>
-			<tr class="border-none-tr">
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>ë°°ì†¡ë£Œ</td>
-				<td></td>
-			</tr>
-			<tr class="border-none-tr">
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>ì´ ê¸ˆì•¡</td>
-				<td></td>
-			</tr>
-		</table>
-		<br>
-  <p style="text-align: right; ">
-  <input class="w3-btn w3-light-gray" style="width: 100px" type="button"  value="êµ¬ë§¤" ></p>
-		<!--  -->
 
-		<caption>
-			<h4>ë¬¸ì˜</h4>
-		</caption>
-		<table table class="w3-table w3-bordered w3-center"
-			style="background-color: #fff; color: #000">
-			<tr>
-				<td>ë²ˆí˜¸</td>
-				<td>ë‚ ì§œ</td>
-				<td>ë¬¸ì˜ë¶„ë¥˜</td>
-				<td>ì œëª©</td>
-				<td>ì²˜ë¦¬í˜„í™©</td>
-			</tr>
-			<tr class="h-2">
-				<td>1</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr class="h-2">
-				<td>2</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-		</table>
-		<!--  -->
-		<br>
-		<table table class="w3-table w3-bordered w3-center"
-			style="background-color: #fff; color: #000">
-			<caption>
-				<h4 style="float: left;">ë¦¬ë·°</h4>
-			</caption>
-			<tr>
-				<td>ë‚ ì§œ</td>
-				<td>ìƒí’ˆ</td>
-				<td>ë¦¬ë·°ì œëª©</td>
-			</tr>
-			<tr class="h-2">
-				<td>1
-				<td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr class="h-2">
-				<td>2</td>
-				<td></td>
-				<td></td>
-			</tr>
-		</table>
-	</div>
+
+
+    <div class="cont_title01 " style="width: 75%; margin: auto;">
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <div class="head-title">
+            <span>È¸¿ø°¡ÀÔ</span>
+        </div>
+        <table class="board_write">
+
+            <colgroup>
+                <col style="width:172px">
+                <col>
+            </colgroup>
+
+
+            <tbody>
+
+
+                <p class="title">ÇÊ¼öÇ×¸ñ</p>
+                <tr>
+                    <th scope="row">¾ÆÀÌµğ</th>
+                    <td><input type="text" class="text" style="width:200px;">
+                        <button class="btn1">Áßº¹È®ÀÎ</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">ºñ¹Ğ¹øÈ£</th>
+                    <td><input type="password" class="text" style="width:200px;">
+
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">ºñ¹Ğ¹øÈ£È®ÀÎ</th>
+                    <td><input type="password" class="text" style="width:200px;">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">ÀÌ¸§</th>
+                    <td><input type="text" class="text" style="width:200px;">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">ÁÖ¼Ò</th>
+                    <td class="address-input">
+                        <div>
+                            <input type="text" id="addressInput1" class="text" style="width:200px;">
+                            <input type="button" class="btn1" onclick="sample4_execDaumPostcode()"
+                                value="¿ìÆí¹øÈ£Ã£±â"></input>
+                        </div>
+                        <div>
+                            <input type="text" class="text" style="width:533px;" id="addressInput2">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">ÀüÈ­¹øÈ£</th>
+                    <td>
+                        <input type="tel" id="rcvMobile" class="text" numberonly="true" maxlength="20" value="">
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+        <table class="board_write">
+            <colgroup>
+                <col style="width:172px">
+                <col>
+            </colgroup>
+            <tbody>
+                <p class="title">¼±ÅÃÇ×¸ñ</p>
+                <tr>
+                    <th scope="row">»ı³â¿ùÀÏ</th>
+                    <td><input type="text" class="text" style="width:200px;">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">ÀÌ¸ŞÀÏ</th>
+                    <td><input type="email" class="text" style="width:200px;">
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <!--  -->
+        <!--  -->
+        <!--  -->
+
+        <div class="center" style="margin-top: 40px;">
+            <button class="btn1">°¡ÀÔ</button>
+        </div>
+
+    </div>
+
+
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+
 </body>
 
 </html>
