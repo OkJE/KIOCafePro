@@ -363,7 +363,7 @@
 				}
                 
             </style>
-</head>
+-</head>
  <h1 >이달의 추천 메뉴</h1>
 
             <div class="section">
@@ -391,7 +391,7 @@
                             <a>
                                 <img src="./img/bread3.jpg">
                             </a>
-                        </li>
+                        </li >
                         <div class="slide-control">
 
                             <div class="control01 div-center">
@@ -410,7 +410,7 @@
                     </ul>
 
 
-                
+                    
                     <!-- 페이징 -->
                     <ul class="slide-pagelist">
                         <li><label for="slide01"></label></li>
@@ -432,7 +432,7 @@
 				<p>등록된 게시물이 없습니다.</p>
 				</c:if>
 			
-			<a class="w3-button w3-right w3-grey" href="${pageContext.request.contextPath }/board/boardForm">게시판 입력</a>
+			<a class="w3-button w3-right w3-grey" href="${pageContext.request.contextPath }/product/productForm">게시판 입력</a>
 			
 			<c:if test="${boardCount > 0}">
 			
@@ -463,7 +463,7 @@
 			<div class="w3-bar w3-center w3-small">
 				<c:if test="${start <= bottomLine}"> <a href="#"  class="w3-button  w3-disabled ">[이전]</a> </c:if>
 				<c:if test="${start > bottomLine}">
-			  <a href="${pageContext.request.contextPath}/board/boardList?pageNum=${start-bottomLine}"   class="w3-button" >[이전]</a></c:if>
+			
 			
 			
 			<c:forEach  var="p" begin="${start}"  end="${end}">
@@ -473,11 +473,12 @@
 			
 			<c:if test="${end  >= maxPage}">
 			   <a href="#"   class="w3-button    w3-disabled ">[다음]</a></c:if>
-			<c:if test="${end  < maxPage}">
-			   <a href="${pageContext.request.contextPath}/board/boardList?pageNum=${start+bottomLine}"   
-			class="w3-button  ">[다음]</a></c:if>
+			
+			
+			
 			</div>
 			</c:if>
+
 			
 		</div>	
 		
