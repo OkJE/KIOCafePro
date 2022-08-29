@@ -1,80 +1,303 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- À§ 3°³ÀÇ ¸ŞÅ¸ ÅÂ±×´Â *¹İµå½Ã* head ÅÂ±×ÀÇ Ã³À½¿¡ ¿Í¾ßÇÕ´Ï´Ù; ¾î¶² ´Ù¸¥ ÄÜÅÙÃ÷µéÀº ¹İµå½Ã ÀÌ ÅÂ±×µé *´ÙÀ½¿¡* ¿Í¾ß ÇÕ´Ï´Ù -->
+    <title>t</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+
+        let state = 0;
+        function openAddressModal() {
+            let a = document.querySelector(".myaddress-modal");
+            if (state == 0) {
+                a.style.display = "block"
+                state = 1;
+                console.log(state);
+            }
+            else if (state == 1) {
+                a.style.display = "none"
+                state = 0;
+                console.log(state);
+            }
+        }
+
+        function sample4_execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    // ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºĞ.
+
+                    // µµ·Î¸í ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Ç¥½ÃÇÑ´Ù.
+                    // ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºĞ±â ÇÑ´Ù.
+                    var roadAddr = data.roadAddress; // µµ·Î¸í ÁÖ¼Ò º¯¼ö
+                    var extraRoadAddr = ''; // Âü°í Ç×¸ñ º¯¼ö
+                    // ¹ıÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ıÁ¤¸®´Â Á¦¿Ü)
+                    // ¹ıÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
+
+                    // console.log(data.buildingName);
+
+                    if (data.bname !== '' && /[µ¿|·Î|°¡]$/g.order - (data.bname)) {
+                        extraRoadAddr += data.bname;
+                    }
+                    console.log(data);
+                    // °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
+                    if (data.buildingName !== '' && data.apartment === 'Y') {
+                        extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // Ç¥½ÃÇÒ Âü°íÇ×¸ñÀÌ ÀÖÀ» °æ¿ì, °ıÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
+                    if (extraRoadAddr !== '') {
+                        extraRoadAddr = ' (' + extraRoadAddr + ')';
+                    }
+
+                    let inputAddress = "";
+                    inputAddress = data.roadAddress;
+                    if (data.buildingName) {
+                        inputAddress = data.roadAddress + " (" + data.buildingName + ")"
+                    }
+                    // ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+                    // ¿ìÆí¹øÈ£
+                    document.getElementById("addressInput1").value = data.zonecode;
+                    document.getElementById('addressInput2').value = inputAddress;
+
+                }
+            }).open();
+        }
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        html {
+            line-height: 1.15;
+            /*±âº» Çà°£ ³ôÀÌ*/
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .center {
+            display: block;
+            margin: auto;
+            width: 100%;
+            text-align: center;
+        }
+
+        div {
+            box-sizing: border-box;
+        }
+
+        .title {
+            padding-top: 40px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+
+
+        th {
+            padding: 21px 0;
+            border-left: 1px solid #eaeaea;
+            background: #b5babd;
+            color: #fff;
+            font-weight: bold;
+        }
+
+
+        td {
+            border-left: 1px solid #eaeaea;
+            border-bottom: 1px solid #eaeaea;
+            background: #fcfcfb;
+        }
+
+
+        .head-title {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .head-title>span {
+
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            font-size: 32px;
+            background: linear-gradient(to top, #FFE400 20%, transparent 40%);
+        }
+
+        .cont_title01 {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 20px;
+            line-height: 38px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .board_write {
+
+            color: black;
+            border-top: 1px solid #d9d9d9;
+            font-size: 15px;
+            line-height: 20px;
+            text-align: left;
+            box-sizing: border-box;
+            border-right: 1px solid #d9d9d9;
+        }
+
+        .board_write th {
+            color: black;
+            padding: 15px 35px;
+            background-color: #E5E4E4;
+
+
+        }
+
+        input.text {
+            padding: 0 10px;
+            margin: 15px 15px;
+            border: 1px solid #c4c4c4;
+            font-size: 15px;
+            line-height: 33px;
+            box-sizing: border-box;
+        }
+
+        .address-input {
+            padding-top: 10px;
+            padding-bottom: 15px;
+        }
+
+        .address-input>div>input {
+            margin: 5px 0px 0px 15px;
+        }
+
+        .btn1 {
+            border: 0px;
+            width: 120px;
+            height: 35px;
+            background-color: #92979b;
+            color: white;
+        }
+    </style>
+
 
 </head>
+
 <body>
-
-	<form class="w3-container"
-		action="${pageContext.request.contextPath}/member/joinPro" name="f"
-		method="post">
-		<table class="w3-table w3-bordered"
-			style="background-color: #fff; color: #000; width: 700px; margin: auto;">
-			<tbody>
-			<caption>
-				<font size="6em"><span style="background:linear-gradient(to top,#FFE400 20%, transparent 40%)">&nbsp;íšŒì›ê°€ì…&nbsp;</span></font>		<br><br><br><br>
-			</caption>
-	
-			<tr>
-			<td><b>í•„ìˆ˜í•­ëª©</b></td>
-			</tr>
-			<tr>
-				<td>ì•„ì´ë””<br> <input type="text" name="id">&nbsp;&nbsp;&nbsp;
-					 <input class="w3-btn w3-light-gray" style="width: 80px" type="button"  value="í™•ì¸" ></p></td>
-			</tr>
-			<tr>
-
-				<td>ë¹„ë°€ë²ˆí˜¸<br> <input type="password" name="pass"></td>
-				<td>ë¹„ë°€ë²ˆí˜¸ ì¬ì…ë ¥<br> <input type="password" name="pass">&nbsp;&nbsp;&nbsp;
-					 <input class="w3-btn w3-light-gray" style="width: 80px" type="button"  value="í™•ì¸" ></p></td>
-			</tr>
-			<tr>
-
-				<td>ì´ë¦„<br> <input type="text" name="name"></td>
-			</tr>
-
-			<tr>
-				<td>ì£¼ì†Œ<br> <input type="text" name="adress"></td>
-			</tr>
-
-			<tr>
-				<td>ì „í™”ë²ˆí˜¸<br> <input type="text" name="tel"></td>
-			</tr>
+    <!--  -->
 
 
 
-			<tr>
-				<td><b>ì„ íƒí•­ëª©</b></td>
-			</tr>
-			<tr>
-				<td>ìƒë…„ì›”ì¼ (ì…ë ¥í•˜ë©´ ì´ë²¤íŠ¸ ì°¸ì—¬ ê°€ëŠ¥!!!)<br> <input type="text" name="birthday">
-					<!-- 		<input type="text" name="month">ì›”&nbsp;
-			<input type="text" name="days">ì¼ -->
-				</td>
-			</tr>
 
-			<tr>
-				<td>ì´ë©”ì¼<br> <input type="text" name="email"></td>
-			</tr>
-			<tr>
-				<td colspan=2;><div style="text-align: center">
-						 <input class="w3-btn w3-light-gray" style="width: 100px" type="button"  value="ê°€ì…" ></p>
-					</div></td>
-			</tr>
-			</tbody>
-		</table>
-	</form>
-	<br>
-	<br>
-	<br>
-	<br>
-	
+    <div class="cont_title01 " style="width: 75%; margin: auto;">
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <div class="head-title">
+            <span>È¸¿ø°¡ÀÔ</span>
+        </div>
+        <table class="board_write">
+
+            <colgroup>
+                <col style="width:172px">
+                <col>
+            </colgroup>
+
+
+            <tbody>
+
+
+                <p class="title">ÇÊ¼öÇ×¸ñ</p>
+                <tr>
+                    <th scope="row">¾ÆÀÌµğ</th>
+                    <td><input type="text" class="text" style="width:200px;">
+                        <button class="btn1">Áßº¹È®ÀÎ</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">ºñ¹Ğ¹øÈ£</th>
+                    <td><input type="password" class="text" style="width:200px;">
+
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">ºñ¹Ğ¹øÈ£È®ÀÎ</th>
+                    <td><input type="password" class="text" style="width:200px;">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">ÀÌ¸§</th>
+                    <td><input type="text" class="text" style="width:200px;">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">ÁÖ¼Ò</th>
+                    <td class="address-input">
+                        <div>
+                            <input type="text" id="addressInput1" class="text" style="width:200px;">
+                            <input type="button" class="btn1" onclick="sample4_execDaumPostcode()"
+                                value="¿ìÆí¹øÈ£Ã£±â"></input>
+                        </div>
+                        <div>
+                            <input type="text" class="text" style="width:533px;" id="addressInput2">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">ÀüÈ­¹øÈ£</th>
+                    <td>
+                        <input type="tel" id="rcvMobile" class="text" numberonly="true" maxlength="20" value="">
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+        <table class="board_write">
+            <colgroup>
+                <col style="width:172px">
+                <col>
+            </colgroup>
+            <tbody>
+                <p class="title">¼±ÅÃÇ×¸ñ</p>
+                <tr>
+                    <th scope="row">»ı³â¿ùÀÏ</th>
+                    <td><input type="text" class="text" style="width:200px;">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">ÀÌ¸ŞÀÏ</th>
+                    <td><input type="email" class="text" style="width:200px;">
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <!--  -->
+        <!--  -->
+        <!--  -->
+
+        <div class="center" style="margin-top: 40px;">
+            <button class="btn1">°¡ÀÔ</button>
+        </div>
+
+    </div>
+
+
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+
 </body>
-<footer>
-</footer>
+
 </html>
