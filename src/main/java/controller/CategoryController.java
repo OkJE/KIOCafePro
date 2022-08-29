@@ -18,26 +18,37 @@ import kic.mskim.RequestMapping;
 import service.ProductDao;
 
 
-
-public class CategoryController extends MskimRequestMapping{
-
+@Controller 
+@RequestMapping("/category/")
+public class CategoryController {
+	
+	HttpServletRequest request;
+	   Model m;
+	   HttpSession session;
+	   @ModelAttribute
+	   void init(HttpServletRequest request, Model m) {
+	      this.request = request;
+	      this.m = m;
+	      this.session = request.getSession();
+	   } 
+	
 
 	@RequestMapping("index")	//handler처럼 사용하기 위해서 가져온다.
-	public String index(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String index() throws Exception {
 		request.setAttribute("index", "board 입니다.");
 		
-		return "/view/bakeryMain.jsp";
+		return "bakeryMain";
 	}
 	
 	@RequestMapping("productForm")	//handler처럼 사용하기 위해서 가져온다.
-	public String productForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String productForm() throws Exception {
 		request.setAttribute("index", "board 입니다.");
 		
-		return "/view/category/bakeryMain.jsp";
+		return "category/bakeryMain";
 	}
 		
-	@RequestMapping("productPro")	//handler처럼 사용하기 위해서 가져온다.
-	public String productPro(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping("categoryPro")	//handler처럼 사용하기 위해서 가져온다.
+	public String productPro() throws Exception {
 		request.setAttribute("index", "board 입니다.");
 		
 		
@@ -66,14 +77,14 @@ public class CategoryController extends MskimRequestMapping{
 			
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
-		return "/view/category/bakeryMain.jsp";
+		return "category/bakeryMain";
 	}}
 	
 	/*@RequestMapping("loginForm")	//handler처럼 사용하기 위해서 가져온다.
 	public String loginForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setAttribute("index", "board 입니다.");
 		
-		return "/view/member/loginForm.jsp";
+		return "member/loginForm";
 	}
 	
 	@RequestMapping("loginPro")	//handler처럼 사용하기 위해서 가져온다.
@@ -103,7 +114,7 @@ public class CategoryController extends MskimRequestMapping{
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
-		return "/view/alert.jsp";
+		return "alert";
 	}
 	
 	@RequestMapping("logout")	//handler처럼 사용하기 위해서 가져온다.
@@ -119,7 +130,7 @@ public class CategoryController extends MskimRequestMapping{
 		
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
-		return "/view/alert.jsp";
+		return "alert";
 	}
 	
 	@RequestMapping("memberInfo")	//handler처럼 사용하기 위해서 가져온다.
@@ -133,13 +144,13 @@ public class CategoryController extends MskimRequestMapping{
 			Member m = new MemberMybatisDao().selectOne(id);
 			request.setAttribute("m", m);
 		
-		return "/view/member/memberInfo.jsp";
+		return "member/memberInfo";
 		} else {
 			String msg = "로그인이 필요합니다.";
 			String url = "/member/loginForm";
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
-			return "/view/alert.jsp";
+			return "alert";
 		}
 	}
 	
@@ -152,13 +163,13 @@ public class CategoryController extends MskimRequestMapping{
 		if (id !=null && !id.equals("")){
 			Member m = new MemberMybatisDao().selectOne(id); 
 			request.setAttribute("m", m);
-			return "/view/member/memberUpdateForm.jsp";
+			return "member/memberUpdateForm";
 		} else {
 			String msg = "로그인이 필요합니다.";
 			String url = "/member/loginForm";
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
-			return "/view/alert.jsp";
+			return "alert";
 		}
 		}
 
@@ -208,7 +219,7 @@ public class CategoryController extends MskimRequestMapping{
 		}	
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
-			return "/view/alert.jsp";		
+			return "alert";		
 		}
 	
 	@RequestMapping("memberDelete")	//handler처럼 사용하기 위해서 가져온다.
@@ -219,13 +230,13 @@ public class CategoryController extends MskimRequestMapping{
 		String id = (String) session.getAttribute("id"); 
 		if(id !=null && !id.equals("")){
 
-			return "/view/member/memberDelete.jsp";
+			return "member/memberDelete";
 		} else {
 			String msg = "로그인이 필요합니다.";
 			String url = "/member/loginForm";
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
-			return "/view/alert.jsp";
+			return "alert";
 		}
 		}
 	
@@ -263,7 +274,7 @@ public class CategoryController extends MskimRequestMapping{
 		}				
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
-			return "/view/alert.jsp";		
+			return "alert";		
 		}
 
 	@RequestMapping("memberPassUpdate")	
@@ -275,11 +286,11 @@ public class CategoryController extends MskimRequestMapping{
 		String msg = "로그인이 필요합니다.";
 		String url = "/member/loginForm";
 		if(id !=null && !id.equals("")){
-			return "/view/member/memberPassUpdate.jsp";
+			return "member/memberPassUpdate";
 		}else{			
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
-			return "/view/alert.jsp";
+			return "alert";
 		} 
 	}
 		
@@ -319,7 +330,7 @@ public class CategoryController extends MskimRequestMapping{
 		}				
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
-			return "/view/alert.jsp";		
+			return "alert";		
 		}
 	
 	
@@ -337,18 +348,18 @@ public class CategoryController extends MskimRequestMapping{
 		List<Member> li = new ArrayList<Member>();
 		li = new MemberMybatisDao().memberList();
 		request.setAttribute("li", li);
-		return "/view/member/memberList.jsp";
+		return "member/memberList";
 		}else{			
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
-			return "/view/alert.jsp";
+			return "alert";
 		} 
 	}
 	
 	@RequestMapping("pictureimgForm")	
 	public String pictureimgForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-			return "/view/member/pictureimgForm.jsp";		 
+			return "member/pictureimgForm";		 
 	}
 	
 	@RequestMapping("picturePro")	
@@ -368,7 +379,7 @@ public class CategoryController extends MskimRequestMapping{
 		}
 		request.setAttribute("filename", filename);
 		
-			return "/view/member/picturePro.jsp";		 
+			return "member/picturePro";		 
 	}
 }*/
 

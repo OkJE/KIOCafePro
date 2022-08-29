@@ -8,6 +8,7 @@ public class Category {
 	private int cprice;
 	private int cqty;
 	private int cmenu;
+	
 	public int getCnum() {
 		return cnum;
 	}
@@ -54,7 +55,5 @@ public class Category {
 	public String toString() {
 		return "product [cnum=" + cnum + ", cname=" + cname + ", cpicture=" + cpicture + ", ctext=" + ctext
 				+ ", cprice=" + cprice + ", cqty=" + cqty + ", cmenu=" + cmenu + "]";
-	}
-	
-	
+	}	
 }
