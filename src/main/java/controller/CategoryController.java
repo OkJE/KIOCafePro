@@ -21,6 +21,7 @@ import service.ProductDao;
 
 public class CategoryController extends MskimRequestMapping{
 
+
 	@RequestMapping("index")	//handler처럼 사용하기 위해서 가져온다.
 	public String index(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setAttribute("index", "board 입니다.");
