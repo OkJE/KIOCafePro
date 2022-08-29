@@ -36,18 +36,18 @@
    </filter-mapping>
    
    
- <!--  
+ 
   <servlet>
-  <servlet-name>Board</servlet-name>
-  <servlet-class>controller.BoardController</servlet-class> 
+  <servlet-name>product</servlet-name>
+  <servlet-class>controller.ProductController</servlet-class> 
   <load-on-startup>1</load-on-startup>  
   </servlet>  
-     --> 
      
-<!--   <servlet-mapping>
-  <servlet-name>Board</servlet-name>
-  <url-pattern>/board/*</url-pattern> 
-  </servlet-mapping> -->
+     
+	<servlet-mapping>
+  <servlet-name>product</servlet-name>
+  <url-pattern>/product/*</url-pattern> 
+  </servlet-mapping>
   
   <!--     
   <servlet>
