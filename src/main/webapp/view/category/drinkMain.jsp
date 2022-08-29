@@ -371,13 +371,17 @@
                 <div class="slidewrap">
                     <ul class="slidelist">
                         <li class="slideitem">
-                            <a>
-                                <img src="./img/drink1.jpg" alt="${pageContext.request.contextPath}/view/category/categoryDetailForm.jsp">
-                                <div class="textbox">
+                             
+                                <div style="textbox">
+                               
+                                <img src="./img/drink1.jpg" width="250px"   alt="${pageContext.request.contextPath}/view/category/categoryDetailForm.jsp">
+                              	
+                              		
                                 	<h1>체드라타(유자)</h1>
-                                	<p>지중해의 태양을 받고 자란 이탈리안 유자로 만든 스파클링 음료</p>							
+                                	<p>지중해의 태양을 받고 자란 이탈리안 유자로 만든 스파클링 음료</p>	
+                               		
                                 </div>
-                            </a>
+                            
                         </li>
                         <li class="slideitem">
                             <a>
@@ -388,7 +392,8 @@
                             <a>
                                 <img src="./img/drink3.jpg">
                             </a>
-                        </li class="slideitem">
+                        </li>
+                        
                         <div class="slide-control">
 
                             <div class="control01 div-center">
@@ -407,7 +412,7 @@
                     </ul>
 
 
-                    </ul>
+                    
                     <!-- 페이징 -->
                     <ul class="slide-pagelist">
                         <li><label for="slide01"></label></li>
