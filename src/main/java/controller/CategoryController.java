@@ -15,12 +15,15 @@ import com.oreilly.servlet.MultipartRequest;
 
 import kic.mskim.MskimRequestMapping;
 import kic.mskim.RequestMapping;
+import model.Category;
 import service.ProductDao;
 
 
 @Controller 
 @RequestMapping("/category/")
 public class CategoryController {
+	 @Autowired 
+	 BoardMybatisDao bd;
 	
 	HttpServletRequest request;
 	   Model m;
@@ -46,39 +49,61 @@ public class CategoryController {
 		
 		return "category/bakeryMain";
 	}
+	@RequestMapping("boardPro")
+	public String boardPro() throws Exception {
+
 		
-	@RequestMapping("categoryPro")	//handler처럼 사용하기 위해서 가져온다.
-	public String productPro() throws Exception {
-		request.setAttribute("index", "board 입니다.");
+		  String path = request.getServletContext().getRealPath("/") +
+		 "view/board/img/"; String filename = null;
 		
-		
-		request.setCharacterEncoding("utf-8");
-		ProductDao mem = new ProductDao();
-		mem.setCnum(request.getParameter("cnum"));
-		mem.setCname(request.getParameter("cname"));
-		mem.setCtext(request.getParameter("ctext"));
-		mem.setCprice(request.getParameter("cprice"));
-		mem.setCmenu(request.getParameter("cqty"));
-		mem.setCmenu(request.getParameter("cmenu"));
-		mem.setCpicture(request.getParameter("cpicture"));
-		
-		ProductDao md = new ProductDao();
-		int num = md.insertProduct(mem);
-		String msg = "";
-		String url = "";
-		
-		if (num>0) {
-			msg=mem.getCname()+"의 상품이 등록되었습니다.";
-			url = "/member/loginForm";
-		} else{
-			msg = "회원가입이 실패 했습니다.";
-			url="/member/joinForm";
-		}
+
+		String msg = "게시물을 등록 실패";
+		String url = "boardForm";
+		HttpSession session = request.getSession();
+
+		String boardid = (String) session.getAttribute("boardid");
+		if (boardid == null)
+			boardid = "1";
+
+		try {
+			MultipartRequest multi = new MultipartRequest(request, path, 10 * 1024 * 1024, "UTF-8");
+			Category category = new Category();
+
+			category.setCnum(multi.getParameter("cnum"));
+			category.setCname(multi.getParameter("cname"));
 			
+			category.setCpicture(multi.getParameter("cpicture"));
+			category.setCtext(multi.getParameter("ctext"));
+			
+			category.setCprice(multi.getParameter("cprice"));
+			category.setCqty(multi.getParameter("cqty"));
+			category.setCmenu(multi.getParameter("cmenu"));
+			
+			
+			category.setBoardid(boardid); // 우선 공지사항
+			if (category.getCpicture() == null)
+				category.getCpicture("");
+
+			
+			int num = bd.insertBoard(category);
+			if (num > 0) {
+				msg = "게시물을 등록 성공";
+				url = "mainpage";
+			}
+
+			System.out.println(category);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
+		// request.setAttribute("filename", filename);
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
-		return "category/bakeryMain";
-	}}
+		return "alert";
+	}
+	
+	}
 	
 	/*@RequestMapping("loginForm")	//handler처럼 사용하기 위해서 가져온다.
 	public String loginForm(HttpServletRequest request, HttpServletResponse response) throws Exception {

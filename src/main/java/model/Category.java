@@ -8,7 +8,7 @@ public class Category {
 	private int cprice;
 	private int cqty;
 	private int cmenu;
-	
+	private String boardid;
 	public int getCnum() {
 		return cnum;
 	}
@@ -51,9 +51,16 @@ public class Category {
 	public void setCmenu(int cmenu) {
 		this.cmenu = cmenu;
 	}
+	public String getBoardid() {
+		return boardid;
+	}
+	public void setBoardid(String boardid) {
+		this.boardid = boardid;
+	}
 	@Override
 	public String toString() {
-		return "product [cnum=" + cnum + ", cname=" + cname + ", cpicture=" + cpicture + ", ctext=" + ctext
-				+ ", cprice=" + cprice + ", cqty=" + cqty + ", cmenu=" + cmenu + "]";
-	}	
+		return "Category [cnum=" + cnum + ", cname=" + cname + ", cpicture=" + cpicture + ", ctext=" + ctext
+				+ ", cprice=" + cprice + ", cqty=" + cqty + ", cmenu=" + cmenu + ", boardid=" + boardid + "]";
+	}
+	
 }
